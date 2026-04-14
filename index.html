@@ -246,6 +246,406 @@
       .nav { position: relative; padding-block: 24px; }
     }
 
+    /* ---------- Containers & common patterns ---------- */
+    .container {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: var(--container-inline);
+    }
+
+    .section { padding-block: clamp(3rem, 8vw, 120px); }
+
+    .eyebrow {
+      font-weight: 800;
+      font-size: clamp(1.125rem, 0.75vw + 0.9rem, 26px);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 1rem;
+    }
+    .eyebrow::after {
+      content: "";
+      display: block;
+      width: 210px;
+      max-width: 70%;
+      height: 4px;
+      background: var(--color-ink);
+      margin-top: 14px;
+      border-radius: 2px;
+    }
+
+    /* ---------- Intro section ---------- */
+    .intro { padding-block: clamp(3rem, 8vw, 120px) clamp(2rem, 5vw, 80px); }
+    .intro-title {
+      font-size: clamp(2rem, 3vw + 1rem, 50px);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: 0.02em;
+      margin: 0 0 1.5rem;
+      max-width: 1094px;
+    }
+    .intro-body {
+      font-size: clamp(1.125rem, 1vw + 0.75rem, 30px);
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      max-width: 1094px;
+      margin: 0;
+    }
+
+    /* ---------- Approach (Strategy & Leadership) ---------- */
+    .approach {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(
+        180deg,
+        rgba(178, 255, 158, 0.6) 0%,
+        rgba(120, 238, 165, 0.6) 50%,
+        rgba(29, 211, 176, 0.6) 100%
+      );
+    }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+    .approach-title {
+      font-size: clamp(2.25rem, 4vw + 0.5rem, 60px);
+      font-weight: 900;
+      text-transform: capitalize;
+      line-height: 1;
+      margin: 0 0 1.5rem;
+    }
+    .approach-body {
+      font-size: clamp(1rem, 0.3vw + 0.9rem, 19px);
+      font-weight: 300;
+      line-height: 1.66;
+      letter-spacing: 0.09em;
+      max-width: 520px;
+      margin: 0;
+    }
+
+    /* Decorative CSS-only concentric badge that mirrors the Figma diagram */
+    .approach-visual {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 1 / 1;
+      margin-inline: auto;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: var(--color-ink);
+    }
+    .approach-visual::before,
+    .approach-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid rgba(60, 22, 66, 0.35);
+    }
+    .approach-visual::after {
+      inset: 12%;
+      border-width: 2px;
+      border-color: rgba(60, 22, 66, 0.55);
+    }
+    .approach-visual .dot {
+      position: absolute;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--color-ink);
+    }
+    .approach-visual .dot:nth-child(1) { top: -7px; left: 50%; transform: translateX(-50%); }
+    .approach-visual .dot:nth-child(2) { top: 20%; right: 8%; }
+    .approach-visual .dot:nth-child(3) { bottom: 20%; right: 8%; }
+    .approach-visual .dot:nth-child(4) { bottom: -7px; left: 50%; transform: translateX(-50%); }
+    .approach-visual .dot:nth-child(5) { bottom: 20%; left: 8%; }
+    .approach-visual .dot:nth-child(6) { top: 20%; left: 8%; }
+
+    .approach-labels {
+      position: absolute;
+      inset: 0;
+      font-size: clamp(0.75rem, 0.6vw + 0.6rem, 1rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+    .approach-labels span {
+      position: absolute;
+      white-space: nowrap;
+    }
+    .approach-labels span:nth-child(1) { top: 6%;  left: 50%; transform: translateX(-50%); }
+    .approach-labels span:nth-child(2) { top: 32%; right: 2%; }
+    .approach-labels span:nth-child(3) { bottom: 32%; right: 2%; }
+    .approach-labels span:nth-child(4) { bottom: 6%; left: 50%; transform: translateX(-50%); }
+    .approach-labels span:nth-child(5) { bottom: 32%; left: 2%; }
+    .approach-labels span:nth-child(6) { top: 32%; left: 2%; }
+
+    .approach-center {
+      text-align: center;
+      font-size: clamp(1rem, 1vw + 0.5rem, 1.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      max-width: 55%;
+    }
+
+    @media (max-width: 820px) {
+      .approach-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- How we work — three cards ---------- */
+    .how-description {
+      font-size: clamp(1.125rem, 1vw + 0.75rem, 30px);
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      max-width: 690px;
+      margin: 0 0 clamp(2rem, 5vw, 4rem);
+    }
+
+    .how-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(2rem, 4vw, 3rem);
+    }
+    @media (max-width: 900px) {
+      .how-cards { grid-template-columns: 1fr; }
+    }
+
+    .card { display: flex; flex-direction: column; gap: 1.5rem; }
+    .card-media {
+      aspect-ratio: 520 / 370;
+      width: 100%;
+      border-radius: 6px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 50%),
+        linear-gradient(135deg, rgba(178,255,158,0.65), rgba(29,211,176,0.65));
+    }
+    .card-title {
+      font-size: clamp(1.5rem, 1vw + 1rem, 30px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      margin: 0;
+      align-self: flex-start;
+      padding-bottom: 4px;
+      border-bottom: 12px solid var(--color-mint);
+    }
+    .card-list {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      font-size: clamp(1rem, 0.4vw + 0.9rem, 22px);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .card-list li {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .card-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--color-ink);
+    }
+
+    /* ---------- CTA row ---------- */
+    .cta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1rem, 2vw, 2rem);
+      margin-top: clamp(3rem, 6vw, 5rem);
+    }
+    @media (max-width: 700px) { .cta-row { grid-template-columns: 1fr; } }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 92px;
+      padding: 1rem 1.5rem;
+      border: 4px solid var(--color-ink);
+      background: transparent;
+      color: var(--color-ink);
+      font-weight: 700;
+      font-size: clamp(1rem, 0.5vw + 0.85rem, 25px);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      background: var(--color-ink);
+      color: #fff;
+    }
+
+    /* ---------- Our work in practice ---------- */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+    }
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .work-grid { grid-template-columns: 1fr; }
+    }
+    .work-item-title {
+      font-size: clamp(1.25rem, 1vw + 0.75rem, 30px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      margin: 0 0 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--color-ink);
+    }
+    .work-item-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.09em;
+      margin: 0;
+    }
+    .work-item-body strong { font-weight: 500; }
+
+    /* ---------- Logos strip ---------- */
+    .logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(1rem, 3vw, 2rem);
+      padding-block: clamp(3rem, 6vw, 5rem);
+      opacity: 0.7;
+    }
+    .logos span {
+      font-weight: 700;
+      font-size: clamp(1rem, 0.8vw + 0.8rem, 1.25rem);
+      letter-spacing: 0.05em;
+      color: rgba(60, 22, 66, 0.7);
+      white-space: nowrap;
+    }
+
+    /* ---------- Inspire / signup & contact ---------- */
+    .inspire {
+      position: relative;
+      background:
+        linear-gradient(180deg, #fff 0%, rgba(181, 240, 229, 0.35) 60%, rgba(181, 240, 229, 0.55) 100%);
+      padding-block: clamp(3rem, 8vw, 120px);
+    }
+    .inspire-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+    @media (max-width: 820px) {
+      .inspire-grid { grid-template-columns: 1fr; }
+    }
+    .inspire-intro {
+      font-size: clamp(1.125rem, 0.75vw + 0.9rem, 24px);
+      font-weight: 400;
+      line-height: 1.47;
+      margin: 0 0 2rem;
+      max-width: 547px;
+    }
+    .newsletter {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      max-width: 570px;
+    }
+    .newsletter input[type="email"] {
+      height: 55px;
+      padding: 0 1rem;
+      border: 1px solid var(--color-ink);
+      border-right: 0;
+      background: #fff;
+      font: inherit;
+      font-size: 16px;
+      color: var(--color-ink);
+      min-width: 0;
+    }
+    .newsletter input[type="email"]::placeholder {
+      color: rgba(60, 22, 66, 0.5);
+      font-weight: 600;
+    }
+    .newsletter button {
+      height: 55px;
+      width: 125px;
+      background: var(--color-ink);
+      color: #fff;
+      border: 0;
+      font-weight: 700;
+      font-size: clamp(1rem, 0.5vw + 0.9rem, 25px);
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .newsletter button:hover { opacity: 0.9; }
+    .consent {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 12px;
+    }
+    .consent input { accent-color: var(--color-ink); }
+
+    .contact-block {
+      font-size: clamp(1rem, 0.4vw + 0.9rem, 24px);
+      font-weight: 500;
+      line-height: 1.33;
+    }
+    .contact-block p { margin: 0; }
+    .contact-block .spacer { height: 1rem; }
+    .cities {
+      font-size: clamp(1.25rem, 1vw + 0.75rem, 26px);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin: 0 0 1.5rem;
+    }
+    .cities span + span { margin-left: clamp(1.5rem, 4vw, 3rem); }
+
+    /* ---------- Site footer bar ---------- */
+    .footer {
+      padding: 2rem 0 3rem;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 15px;
+    }
+    .footer-links a { margin-right: 1.5rem; letter-spacing: 0.05em; }
+    .footer-links a:last-child { margin-right: 0; }
+    .footer-social a {
+      margin-left: 1.25rem;
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: 0.05em;
+    }
+    .footer-social a:first-child { margin-left: 0; }
+    .footer-copy { color: var(--color-ink); }
+
+    @media (max-width: 700px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links a, .footer-social a { margin: 0 1rem 0 0; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
     }
@@ -285,8 +685,236 @@
   </header>
 
   <main id="top">
-    <!-- Subsequent sections (Our approach, How we work, Our work in practice,
-         Be inspired, Footer) will be added in follow-up steps. -->
+    <!-- ========== Intro ========== -->
+    <section class="section intro">
+      <div class="container">
+        <h2 class="intro-title">Start shaping your innovation readiness</h2>
+        <p class="intro-body">
+          With our curated approach, we focus on five crucial elements to ignite
+          innovation and strengthen a culture of collaboration. These five elements
+          are the areas where innovation leaders and teams still have ample room
+          for improvement. They are the ones most likely to make a difference to
+          your innovation impact and will strengthen your innovation culture.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== Our approach: Strategy & Leadership ========== -->
+    <section class="section approach" id="services">
+      <div class="container">
+        <p class="eyebrow">Our approach</p>
+        <div class="approach-grid">
+          <div>
+            <h2 class="approach-title">Strategy &amp;<br />Leadership</h2>
+            <p class="approach-body">
+              Top innovators define their innovation purpose clearly and set
+              aspirational objectives that align with the overarching strategy.
+              They take deliberate choices about innovation opportunities, ie.
+              areas where innovation will create the biggest value for the
+              organisation and superior impact. They focus on a limited number
+              of opportunities in which they can leverage and build a unique
+              strategic capability. Leadership drives this innovation agenda
+              from the top, allocating resources according to strategic
+              innovation priorities.
+            </p>
+          </div>
+
+          <div class="approach-visual" aria-hidden="true">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <div class="approach-labels">
+              <span>Strategy &amp; Leadership</span>
+              <span>Engagement</span>
+              <span>Inventives</span>
+              <span>Mindset &amp; Processes</span>
+              <span>Design Thinking</span>
+              <span>Ecosystem</span>
+            </div>
+            <p class="approach-center">Innovation<br />Readiness</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== How we work ========== -->
+    <section class="section how" id="about">
+      <div class="container">
+        <p class="eyebrow">How we work</p>
+        <p class="how-description">
+          Our approach to work is centred around the processes and practices that
+          work best for you, taking your team to the next level.
+        </p>
+
+        <div class="how-cards">
+          <article class="card">
+            <div class="card-media" role="img" aria-label="Innovation facilitation"></div>
+            <h3 class="card-title">Innovation Facilitation</h3>
+            <ul class="card-list">
+              <li>Finding the right ingredients for innovation</li>
+              <li>Delivering winning innovation ideas</li>
+              <li>Adopting impactful sustainability practices</li>
+              <li>Creating bespoke sustainable, innovative and creative solutions</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-media" role="img" aria-label="Change management"></div>
+            <h3 class="card-title">Change management</h3>
+            <ul class="card-list">
+              <li>Inciting exploration of the unknown</li>
+              <li>Teaching teams how to embrace failure</li>
+              <li>Supporting knowledge sharing across silos</li>
+              <li>Implementing an environment that enables change</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-media" role="img" aria-label="In-house support"></div>
+            <h3 class="card-title">In-house support</h3>
+            <ul class="card-list">
+              <li>Updating innovation practices from the inside</li>
+              <li>Supporting co-creation</li>
+              <li>Identifying tools, practices and approaches for innovation</li>
+              <li>Collaborating with teams to drive innovation</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <a href="#work" class="btn-outline">Discover our work</a>
+          <a href="#contact" class="btn-outline">Contact us to learn more</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Our work in practice ========== -->
+    <section class="section work" id="work">
+      <div class="container">
+        <p class="eyebrow">Our work in practice</p>
+
+        <div class="work-grid">
+          <article>
+            <h3 class="work-item-title">Group power sessions</h3>
+            <p class="work-item-body">
+              Short and simple workshops to <strong>ignite innovation</strong>
+              with small groups.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="work-item-title">Training with teams</h3>
+            <p class="work-item-body">
+              We unleash the <strong>collective intelligence</strong> of diverse
+              teams to deliver new ideas.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="work-item-title">Mentoring and coaching</h3>
+            <p class="work-item-body">
+              We bring individuals and small teams up to speed through
+              <strong>innovation coaching</strong>.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="work-item-title">Validation and interviewing</h3>
+            <p class="work-item-body">
+              We help you take your new products, services and ideas to the
+              public to validate their potential.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="work-item-title">Blueprints and Toolkits</h3>
+            <p class="work-item-body">
+              We create <strong>frameworks</strong> and <strong>programs</strong>
+              for you to apply by yourselves.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="work-item-title">Reporting and Evaluation</h3>
+            <p class="work-item-body">
+              We develop and support your reporting and evaluation requirements
+              to determine success.
+            </p>
+          </article>
+        </div>
+
+        <div class="logos" aria-label="Selected clients">
+          <span>Client One</span>
+          <span>Client Two</span>
+          <span>Client Three</span>
+          <span>Client Four</span>
+          <span>Client Five</span>
+          <span>Client Six</span>
+          <span>Client Seven</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Be inspired / Contact ========== -->
+    <section class="inspire" id="contact">
+      <div class="container">
+        <div class="inspire-grid">
+          <div>
+            <p class="cities"><span>Biel</span><span>Geneva</span></p>
+            <div class="contact-block">
+              <p>Fresh Strategy Ltd.</p>
+              <p>Aarbergstrasse 1</p>
+              <p>Biel / Bienne, Switzerland</p>
+              <div class="spacer"></div>
+              <p><a href="tel:+41796808690">+41 79 680 86 90</a></p>
+              <p><a href="mailto:hello@freshstrategy.ch">hello@freshstrategy.ch</a></p>
+            </div>
+          </div>
+
+          <div>
+            <p class="eyebrow">Be inspired</p>
+            <p class="inspire-intro">
+              Get expert innovation tips straight to your inbox, and become a
+              better innovator.
+            </p>
+
+            <form class="newsletter" action="#" method="post" novalidate>
+              <label for="newsletter-email" class="visually-hidden" style="position:absolute;left:-9999px;">Email</label>
+              <input
+                id="newsletter-email"
+                type="email"
+                name="email"
+                placeholder="Email"
+                autocomplete="email"
+                required
+              />
+              <button type="submit">Send</button>
+            </form>
+            <label class="consent">
+              <input type="checkbox" name="consent" required />
+              <span>Yes, I consent to receive emails</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
+    <footer class="footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p class="footer-copy">© 2022 by Fresh Strategy Ltd. liab. Co</p>
+
+        <nav class="footer-links" aria-label="Legal">
+          <a href="#terms">Terms &amp; Conditions</a>
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#imprint">Imprint</a>
+        </nav>
+
+        <nav class="footer-social" aria-label="Social">
+          <a href="https://twitter.com" rel="noopener noreferrer" target="_blank">Twitter</a>
+          <a href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+        </nav>
+      </div>
+    </footer>
   </main>
 
   <script>
